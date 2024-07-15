@@ -23,6 +23,7 @@ function init() {
 
 function render() {
   updateBoard()
+  updateMessage()
 }
 
 function updateBoard() {
@@ -40,6 +41,15 @@ function updateBoard() {
   })
 }
 
+function updateMessage() {
+  if (!winner && !tie) {
+    messageEl.textContent = `It is ${turn}'s turn`
+  } else if (!winner && tie) {
+    messageEl.textContent = "Cat's game.  Meow!!! 😻"
+  } else {
+    messageEl.textContent = `${turn} wins the game!`
+  }
+}
 
 /*----------- Event Listeners ----------*/
 
