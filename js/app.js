@@ -1,5 +1,14 @@
 /*---------------- Constants ---------------*/
-
+const winningCombos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+]
 
 /*--------- Variables (state) ----------*/
 let board, turn, winner, tie
@@ -14,7 +23,7 @@ const messageEl = document.getElementById('message')
 init()
 
 function init() {
-  board = ['', 'X', '', '', 'O', '', 'X', '', '']
+  board = ['', '', '', '', '', '', '', '', '']
   turn = 'X'
   winner = false
   tie = false
@@ -51,8 +60,23 @@ function updateMessage() {
   }
 }
 
-/*----------- Event Listeners ----------*/
+function handleClick(evt) {
+  const squareIndex = parseInt(evt.target.id)
+  if (board[squareIndex] === 'X' || board[squareIndex] === 'O' || winner) {
+    return
+  }
+  placePiece(squareIndex)
+}
 
+function placePiece(index) {
+  board[index] = turn
+  console.log(board)
+}
+
+/*----------- Event Listeners ----------*/
+squareEls.forEach((squareEl) => {
+  squareEl.addEventListener('click', handleClick)
+})
 
 ////1) Define the required variables used to track the state of the game.
 
