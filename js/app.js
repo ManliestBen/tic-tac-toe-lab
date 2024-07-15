@@ -14,14 +14,30 @@ const messageEl = document.getElementById('message')
 init()
 
 function init() {
-  board = ['', '', '', '', '', '', '', '', '']
-  turn = 'x'
+  board = ['', 'X', '', '', 'O', '', 'X', '', '']
+  turn = 'X'
   winner = false
   tie = false
   render()
 }
 
 function render() {
+  updateBoard()
+}
+
+function updateBoard() {
+  board.forEach((cell, idx) => {
+    if (cell === 'X') {
+      squareEls[idx].textContent = 'X'
+      // squareEls[idx].style.backgroundColor = 'green'
+    } else if (cell === 'O') {
+      squareEls[idx].textContent = 'O'
+      // squareEls[idx].style.backgroundColor = 'blue'
+    } else {
+      squareEls[idx].textContent = ''
+      // squareEls[idx].style.backgroundColor = 'white'
+    }
+  })
 }
 
 
