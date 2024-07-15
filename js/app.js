@@ -66,16 +66,14 @@ function handleClick(evt) {
     return
   }
   placePiece(squareIndex)
-  // check for a winner
   checkForWinner()
-  console.log(winner)
-  // change the turn
+  checkForTie()
+  switchPlayerTurn()
   render()
 }
 
 function placePiece(index) {
   board[index] = turn
-  console.log(board)
 }
 
 function checkForWinner() {
@@ -91,6 +89,27 @@ function checkForWinner() {
   ) {
     winner = true
   }
+}
+
+function checkForTie() {
+  if (winner) {
+    return
+  }
+  if (!board.includes('')) {
+    tie = true
+  }
+}
+
+function switchPlayerTurn() {
+  if (winner) {
+    return
+  }
+  if (turn === 'X') {
+    turn = 'O'
+  } else {
+    turn = 'X'
+  }
+  // turn = turn === 'X' ? 'O' : 'X'
 }
 
 /*----------- Event Listeners ----------*/
