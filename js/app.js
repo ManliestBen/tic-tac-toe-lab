@@ -26,6 +26,9 @@ const resetBtnEl = document.getElementById('reset')
 init()
 
 function init() {
+  squareEls.forEach(squareEl => {
+    squareEl.className = 'sqr'
+  })
   board = ['', '', '', '', '', '', '', '', '']
   turn = 'X'
   winner = false
@@ -41,9 +44,11 @@ function render() {
 function updateBoard() {
   board.forEach((cell, idx) => {
     if (cell === 'X') {
+      squareEls[idx].classList.add('animate__animated','animate__flipInY')
       squareEls[idx].textContent = '🦊'
       squareEls[idx].style.backgroundColor = '#468189'
     } else if (cell === 'O') {
+      squareEls[idx].classList.add('animate__animated','animate__flipInY')
       squareEls[idx].textContent = '🐰'
       squareEls[idx].style.backgroundColor = '#F4E9CD'
     } else {
@@ -91,6 +96,7 @@ function checkForWinner() {
     (board[2] !== '' && board[2] === board[4] && board[2] === board[6])
   ) {
     winner = true
+    confetti.start(1000)
   }
 }
 
