@@ -11,6 +11,7 @@ const winningCombos = [
 ]
 const gameOverSound = new Audio('../assets/gameover.wav')
 const turnSound = new Audio('../assets/turn.mp3')
+const winSound = new Audio('../assets/winner.wav')
 
 /*--------- Variables (state) ----------*/
 let board, turn, winner, tie
@@ -96,6 +97,7 @@ function checkForWinner() {
     (board[2] !== '' && board[2] === board[4] && board[2] === board[6])
   ) {
     winner = true
+    winSound.play()
     confetti.start(1000)
   }
 }
@@ -114,7 +116,9 @@ function switchPlayerTurn() {
   if (winner) {
     return
   }
-  turnSound.play()
+  if (!tie) {
+    turnSound.play()
+  }
   if (turn === 'X') {
     turn = 'O'
   } else {
