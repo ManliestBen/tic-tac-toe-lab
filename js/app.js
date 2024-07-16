@@ -39,25 +39,25 @@ function render() {
 function updateBoard() {
   board.forEach((cell, idx) => {
     if (cell === 'X') {
-      squareEls[idx].textContent = 'X'
-      // squareEls[idx].style.backgroundColor = 'green'
+      squareEls[idx].textContent = '🦊'
+      squareEls[idx].style.backgroundColor = '#468189'
     } else if (cell === 'O') {
-      squareEls[idx].textContent = 'O'
-      // squareEls[idx].style.backgroundColor = 'blue'
+      squareEls[idx].textContent = '🐰'
+      squareEls[idx].style.backgroundColor = '#F4E9CD'
     } else {
       squareEls[idx].textContent = ''
-      // squareEls[idx].style.backgroundColor = 'white'
+      squareEls[idx].style.backgroundColor = 'white'
     }
   })
 }
 
 function updateMessage() {
   if (!winner && !tie) {
-    messageEl.textContent = `It is ${turn}'s turn`
+    messageEl.textContent = `It is ${turn === 'X' ? '🦊' : '🐰'}'s turn`
   } else if (!winner && tie) {
     messageEl.textContent = "Cat's game.  Meow!!! 😻"
   } else {
-    messageEl.textContent = `${turn} wins the game!`
+    messageEl.textContent = `${turn === 'X' ? '🦊' : '🐰'} wins the game!`
   }
 }
 
