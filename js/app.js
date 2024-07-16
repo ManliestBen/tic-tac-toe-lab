@@ -9,6 +9,8 @@ const winningCombos = [
   [0, 4, 8],
   [2, 4, 6]
 ]
+const gameOverSound = new Audio('../assets/gameover.wav')
+const turnSound = new Audio('../assets/turn.mp3')
 
 /*--------- Variables (state) ----------*/
 let board, turn, winner, tie
@@ -98,6 +100,7 @@ function checkForTie() {
   }
   if (!board.includes('')) {
     tie = true
+    gameOverSound.play()
   }
 }
 
@@ -105,6 +108,7 @@ function switchPlayerTurn() {
   if (winner) {
     return
   }
+  turnSound.play()
   if (turn === 'X') {
     turn = 'O'
   } else {
